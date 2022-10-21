@@ -64,53 +64,53 @@ class Visca():
 		else:
 			recipient_s=str(recipient)
 
-		print "-----"
+		print ("-----")
 
 		if title:
 			print "packet (%s) [%d => %s] len=%d: %s" % (title,sender,recipient_s,len(packet),packet.encode('hex'))
 		else:
 			print "packet [%d => %s] len=%d: %s" % (sender,sender,recipient_s,len(packet),packet.encode('hex'))
 
-		print " QQ.........: %02x" % qq
+		print (" QQ.........: %02x" % qq)
 
 		if qq==0x01:
-			print "              (Command)"
+			print ("              (Command)")
 		if qq==0x09:
-			print "              (Inquiry)"
+			print ("              (Inquiry)")
 
 		if len(packet)>3:
 			rr=ord(packet[2])
-			print " RR.........: %02x" % rr
+			print (" RR.........: %02x" % rr)
 
 			if rr==0x00:
-				print "              (Interface)"
+				(print "              (Interface)")
 			if rr==0x04:
-				print "              (Camera [1])"
+				(print "              (Camera [1])")
 			if rr==0x06:
-				print "              (Pan/Tilter)"
+				(print "              (Pan/Tilter)")
 
 		if len(packet)>4:
 			data=packet[3:-1]
-			print " Data.......: %s" % data.encode('hex')
+			print (" Data.......: %s" % data.encode('hex'))
 		else:
-			print " Data.......: None"
+			print (" Data.......: None")
 
 		if not term==0xff:
-			print "ERROR: Packet not terminated correctly"
+			print ("ERROR: Packet not terminated correctly")
 			return
 
 		if len(packet)==3 and ((qq & 0b11110000)>>4)==4:
 			socketno = (qq & 0b1111)
-			print " packet: ACK for socket %02x" % socketno
+			print (" packet: ACK for socket %02x" % socketno)
 
 		if len(packet)==3 and ((qq & 0b11110000)>>4)==5:
 			socketno = (qq & 0b1111)
-			print " packet: COMPLETION for socket %02x" % socketno
+			print (" packet: COMPLETION for socket %02x" % socketno)
 
 		if len(packet)>3 and ((qq & 0b11110000)>>4)==5:
 			socketno = (qq & 0b1111)
 			ret=packet[2:-1].encode('hex')
-			print " packet: COMPLETION for socket %02x, data=%s" % (socketno,ret)
+			print (" packet: COMPLETION for socket %02x, data=%s" % (socketno,ret))
 
 		if len(packet)==4 and ((qq & 0b11110000)>>4)==6:
 			print " packet: ERROR!"

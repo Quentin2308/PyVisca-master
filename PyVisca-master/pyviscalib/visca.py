@@ -219,7 +219,7 @@ class Visca():
 
 		self.mutex.acquire()
 
-		self._write_packet(packet)
+		self._write_packet(bytes(packet))
 
 		reply = self.recv_packet()
 

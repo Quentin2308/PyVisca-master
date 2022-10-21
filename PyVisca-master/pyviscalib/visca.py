@@ -67,9 +67,9 @@ class Visca():
 		print ("-----")
 
 		if title:
-			print "packet (%s) [%d => %s] len=%d: %s" % (title,sender,recipient_s,len(packet),packet.encode('hex'))
+			print ("packet (%s) [%d => %s] len=%d: %s" % (title,sender,recipient_s,len(packet),packet.encode('hex')))
 		else:
-			print "packet [%d => %s] len=%d: %s" % (sender,sender,recipient_s,len(packet),packet.encode('hex'))
+			print ("packet [%d => %s] len=%d: %s" % (sender,sender,recipient_s,len(packet),packet.encode('hex')))
 
 		print (" QQ.........: %02x" % qq)
 
@@ -83,11 +83,11 @@ class Visca():
 			print (" RR.........: %02x" % rr)
 
 			if rr==0x00:
-				(print "              (Interface)")
+				print ("              (Interface)")
 			if rr==0x04:
-				(print "              (Camera [1])")
+				print ("              (Camera [1])")
 			if rr==0x06:
-				(print "              (Pan/Tilter)")
+				print ("              (Pan/Tilter)")
 
 		if len(packet)>4:
 			data=packet[3:-1]

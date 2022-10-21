@@ -21,13 +21,14 @@
 """PyVisca by Florian Streibelt <pyvisca@f-streibelt.de>"""
 
 import serial,sys
-from thread import allocate_lock
+import threading
+from threading import _thread
 
 class Visca():
 
 	def __init__(self,portname="/dev/ttyS1"):
 		self.serialport=None
-		self.mutex = allocate_lock()
+		self.mutex = _thread.allocate_lock()
 		self.portname=portname
 		self.open_port()
 

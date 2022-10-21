@@ -25,7 +25,7 @@ from thread import allocate_lock
 
 class Visca():
 
-	def __init__(self,portname="/dev/ttyUSB0"):
+	def __init__(self,portname="/dev/ttyS1"):
 		self.serialport=None
 		self.mutex = allocate_lock()
 		self.portname=portname

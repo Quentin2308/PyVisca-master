@@ -22,13 +22,13 @@
 
 import serial,sys
 import threading
-from threading import _thread
+from threading import thread
 
 class Visca():
 
 	def __init__(self,portname="/dev/ttyS1"):
 		self.serialport=None
-		self.mutex = _thread.allocate_lock()
+		self.mutex = thread.allocate_lock()
 		self.portname=portname
 		self.open_port()
 

@@ -224,7 +224,7 @@ class Visca():
 
 
 		if reply[-1:] != '\xff':
-			print "received packet not terminated correctly: %s" % reply.encode('hex')
+			print ("received packet not terminated correctly: %s" % reply.encode('hex'))
 			reply=None
 
 		self.mutex.release()

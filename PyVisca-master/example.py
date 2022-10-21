@@ -32,7 +32,7 @@ def main():
 
 	v=Visca()
 
-	v.cmd_adress_set()
+	#v.cmd_adress_set()
 
 	v.cmd_if_clear_all()
 
